@@ -2,8 +2,7 @@ import React, { useState } from "react"
 import "./CSS/LoginSignup.css"
 import axios from "axios"
 
-const localhost = "http://localhost:4000"
-const url = "https://e-commerce-mern-frontend-five.vercel.app"
+
 
 const LoginSignup = () => {
     const [state, setState] = useState("Login")
@@ -21,7 +20,7 @@ const LoginSignup = () => {
     const login = async() => {
         try {
             console.log("Login details updated", formData)
-            const response = await axios.post(`${url}/login`, formData)
+            const response = await axios.post(`${process.env.VITE_SERVER_URL}/login`, formData)
             console.log(response)
             const data = response.data;
             if (data.success) {
@@ -48,7 +47,7 @@ const LoginSignup = () => {
     const signup = async () => {
         try {
             console.log("Signup details updated", formData)
-            const response = await axios.post("`${url}/signup`", formData)
+            const response = await axios.post("`${process.env.VITE_SERVER_URL}/signup`", formData)
             console.log(response)
             const data = response.data;
             if (data.success) {
