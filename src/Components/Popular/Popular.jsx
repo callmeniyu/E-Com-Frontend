@@ -10,7 +10,7 @@ const Popular = () => {
     
     useEffect(() => {
         const popularWomen = async() => {
-            const response = await axios.get(`${process?.env?.VITE_SERVER_URL}/popularinwomen`)
+            const response = await axios.get(`${process.env.VITE_SERVER_URL}/popularinwomen`)
             const data = response.data
             setPopular_Women(data)
         }

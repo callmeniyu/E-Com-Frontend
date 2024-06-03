@@ -47,7 +47,7 @@ const LoginSignup = () => {
     const signup = async () => {
         try {
             console.log("Signup details updated", formData)
-            const response = await axios.post("`${process.env.VITE_SERVER_URL}/signup`", formData)
+            const response = await axios.post(`${process.env.VITE_SERVER_URL}/signup`, formData)
             console.log(response)
             const data = response.data;
             if (data.success) {
