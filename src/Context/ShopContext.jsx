@@ -2,8 +2,7 @@ import React, { createContext, useEffect, useState } from "react"
 // import all_product from "../Components/Assets/all_product"
 import axios from "axios"
 
-const localhost = "http://localhost:4000"
-const url = "https://e-commerce-mern-frontend-five.vercel.app"
+
 
 export const ShopContext = createContext(null)
 
@@ -24,7 +23,7 @@ const ShopContextProvider = (props) => {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get(`${url}/allproducts`)
+            const response = await axios.get(`${process?.env?.VITE_SERVER_URL}/allproducts`)
             const data = response.data
             setAll_Product(data)
         } catch (error) {
@@ -35,7 +34,7 @@ const ShopContextProvider = (props) => {
     const fetchCartData = async () => {
         if(localStorage.getItem("auth-token"))
         try {
-            const response = await axios.post(`${url}/getcartdata`, "", {
+            const response = await axios.post(`${process?.env.VITE_SERVER_URL}/getcartdata`, "", {
                 headers: {
                     "auth-token":`${localStorage.getItem("auth-token")}`
                 }
@@ -54,7 +53,7 @@ const ShopContextProvider = (props) => {
     const addToCart = async(itemId) => {
         setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
         if (localStorage.getItem("auth-token")) {
-            const response = await axios.post(`${url}/addtocart`, { itemId: itemId }, {
+            const response = await axios.post(`${process.env.VITE_SERVER_URL}/addtocart`, { itemId: itemId }, {
                 headers: {
                     "auth-token":`${localStorage.getItem("auth-token")}`
                 }
@@ -64,7 +63,7 @@ const ShopContextProvider = (props) => {
     const removeFromCart = async(itemId) => {
         setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }))
         if (localStorage.getItem("auth-token")) {
-            const response = await axios.post(`${url}/removefromcart`, { itemId: itemId }, {
+            const response = await axios.post(`${process.env.VITE_SERVER_URL}/removefromcart`, { itemId: itemId }, {
                 headers: {
                     "auth-token":`${localStorage.getItem("auth-token")}`
                 }
