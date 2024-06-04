@@ -7,6 +7,7 @@ import Footer from "./Components/Footer/Footer";
  import men_banner from "./Components/Assets/banner_mens.png"
 import women_banner from "./Components/Assets/banner_women.png"
 import kids_banner from "./Components/Assets/banner_kids.png"
+import Error from "./Components/Error/Error";
 function App() {
     const [count, setCount] = useState(0);
 
@@ -26,6 +27,8 @@ function App() {
                     </Route>
                     <Route path="/cart" element={<Cart />} />
                     <Route path="/login" element={<LoginSignup />} />
+                    <Route path="*" element={<Error />} />
+                    
                 </Routes>
                 <Footer />
             </BrowserRouter>
