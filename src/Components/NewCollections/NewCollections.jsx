@@ -10,7 +10,7 @@ const NewCollections = () => {
 
     useEffect(() => {
         const fetchNewCollections = async() => {
-            const response = await axios.get(`${process?.env?.VITE_SERVER_URL}/newcollections`)
+            const response = await axios.get(`${process.env.VITE_SERVER_URL}/newcollections`)
             const data = response.data
             setNew_Collections(data)
         }
